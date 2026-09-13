@@ -1,0 +1,188 @@
+[gd_scene load_steps=11 format=3 uid="uid://djpmk03rkj5cq"]
+
+[ext_resource type="PackedScene" path="res://blocks/checkpoint.tscn" id="cp_scn"]
+[ext_resource type="PackedScene" path="res://levels/basics.tscn" id="lvl_basics"]
+[ext_resource type="PackedScene" uid="uid://b6vrc42723q4l" path="res://levels/castle_approach.tscn" id="lvl_castle"]
+[ext_resource type="PackedScene" path="res://levels/novice_channel.tscn" id="lvl_novice"]
+[ext_resource type="Script" uid="uid://dif742x7sd7ay" path="res://course/level.gd" id="lvl_script"]
+[ext_resource type="PackedScene" path="res://levels/velocity.tscn" id="lvl_velocity"]
+[ext_resource type="PackedScene" path="res://blocks/portal.tscn" id="portal_scn"]
+[ext_resource type="PackedScene" path="res://blocks/vendor.tscn" id="vendor_scn"]
+
+[sub_resource type="StandardMaterial3D" id="mat_stone"]
+albedo_color = Color(0.62, 0.58, 0.52, 1)
+roughness = 0.95
+
+[sub_resource type="StandardMaterial3D" id="mat_trim"]
+albedo_color = Color(0.42, 0.36, 0.5, 1)
+metallic = 0.2
+roughness = 0.8
+
+[node name="Lobby" type="Node3D"]
+script = ExtResource("lvl_script")
+level_name = "The Lobby"
+blurb = "Vendor, tutorials, and the way down."
+
+[node name="FloorMain" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+use_collision = true
+size = Vector3(100, 2, 60)
+material = SubResource("mat_stone")
+
+[node name="FloorNorth" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 55)
+use_collision = true
+size = Vector3(70, 2, 52)
+material = SubResource("mat_stone")
+
+[node name="FloorSouth" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -55)
+use_collision = true
+size = Vector3(70, 2, 52)
+material = SubResource("mat_stone")
+
+[node name="WallWest" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 12, 0)
+use_collision = true
+size = Vector3(2, 24, 60)
+material = SubResource("mat_stone")
+
+[node name="WallEast" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 12, 0)
+use_collision = true
+size = Vector3(2, 24, 60)
+material = SubResource("mat_stone")
+
+[node name="WallNorthLeft" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 12, 30)
+use_collision = true
+size = Vector3(36, 24, 2)
+material = SubResource("mat_stone")
+
+[node name="WallNorthRight" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 12, 30)
+use_collision = true
+size = Vector3(36, 24, 2)
+material = SubResource("mat_stone")
+
+[node name="WallSouthLeft" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 12, -30)
+use_collision = true
+size = Vector3(36, 24, 2)
+material = SubResource("mat_stone")
+
+[node name="WallSouthRight" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 12, -30)
+use_collision = true
+size = Vector3(36, 24, 2)
+material = SubResource("mat_stone")
+
+[node name="PortalRoomWest" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 12, 55)
+use_collision = true
+size = Vector3(2, 24, 52)
+material = SubResource("mat_stone")
+
+[node name="PortalRoomEast" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 12, 55)
+use_collision = true
+size = Vector3(2, 24, 52)
+material = SubResource("mat_stone")
+
+[node name="PortalRoomEnd" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 80)
+use_collision = true
+size = Vector3(72, 24, 2)
+material = SubResource("mat_stone")
+
+[node name="LevelRoomWest" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 12, -55)
+use_collision = true
+size = Vector3(2, 24, 52)
+material = SubResource("mat_stone")
+
+[node name="LevelRoomEast" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 12, -55)
+use_collision = true
+size = Vector3(2, 24, 52)
+material = SubResource("mat_stone")
+
+[node name="LevelRoomEnd" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -80)
+use_collision = true
+size = Vector3(72, 24, 2)
+material = SubResource("mat_stone")
+
+[node name="VendorDais" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.41875792, 0, 0, 0, 1, -38, 0.48224115, 19)
+use_collision = true
+size = Vector3(18, 2, 18)
+material = SubResource("mat_trim")
+
+[node name="Pillar1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 11, -14)
+use_collision = true
+size = Vector3(3, 22, 3)
+material = SubResource("mat_trim")
+
+[node name="Pillar2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 11, -14)
+use_collision = true
+size = Vector3(3, 22, 3)
+material = SubResource("mat_trim")
+
+[node name="Pillar3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 11, 14)
+use_collision = true
+size = Vector3(3, 22, 3)
+material = SubResource("mat_trim")
+
+[node name="Pillar4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 11, 14)
+use_collision = true
+size = Vector3(3, 22, 3)
+material = SubResource("mat_trim")
+
+[node name="Vendor" parent="." instance=ExtResource("vendor_scn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 1.0648956, 19)
+vendor_name = "Grimwald the Unmoved"
+lines = PackedStringArray("So. Another one who thinks the castle can be surfed.", "The walls below are steeper than forty-five degrees. That is the only reason any of this works.", "Hold ONE strafe key. Sweep the mouse the same way. Never press forward in the air -- it caps you.", "Gold is worth more the faster you are moving when you take it. Kill on the move, not from a standstill.", "Through the north arch to practise. South, if you would rather find out the hard way.")
+
+[node name="PortalBasics" parent="." instance=ExtResource("portal_scn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 76)
+target_level = ExtResource("lvl_basics")
+label = "Basics"
+tint = Color(0.4, 0.9, 0.75, 1)
+
+[node name="PortalStrafe" parent="." instance=ExtResource("portal_scn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 76)
+label = "Strafing"
+tint = Color(0.4, 0.9, 0.75, 1)
+
+[node name="PortalCombat" parent="." instance=ExtResource("portal_scn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 76)
+label = "Combat"
+tint = Color(0.4, 0.9, 0.75, 1)
+
+[node name="PortalCastle" parent="." instance=ExtResource("portal_scn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -76)
+target_level = ExtResource("lvl_castle")
+label = "Castle Approach"
+tint = Color(1, 0.72, 0.35, 1)
+
+[node name="PortalNovice" parent="." instance=ExtResource("portal_scn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -76)
+target_level = ExtResource("lvl_novice")
+label = "Novice Channel"
+tint = Color(1, 0.72, 0.35, 1)
+
+[node name="PortalVelocity" parent="." instance=ExtResource("portal_scn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -76)
+target_level = ExtResource("lvl_velocity")
+label = "Velocity"
+tint = Color(1, 0.72, 0.35, 1)
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="CP00" parent="Checkpoints" instance=ExtResource("cp_scn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

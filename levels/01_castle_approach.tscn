@@ -1,0 +1,107 @@
+[gd_scene load_steps=8 format=3 uid="uid://b48gyxexd4srp"]
+
+[ext_resource type="Script" uid="uid://dif742x7sd7ay" path="res://course/level.gd" id="1_0b77u"]
+[ext_resource type="PackedScene" path="res://blocks/platform.tscn" id="2_y3so6"]
+[ext_resource type="PackedScene" path="res://blocks/ramp.tscn" id="4_513gp"]
+[ext_resource type="PackedScene" path="res://blocks/finish.tscn" id="6_8fbbg"]
+[ext_resource type="PackedScene" path="res://blocks/decor.tscn" id="8_j5qlp"]
+[ext_resource type="PackedScene" path="res://blocks/checkpoint.tscn" id="10_ii5rr"]
+[ext_resource type="PackedScene" path="res://blocks/goblin_archer.tscn" id="11_gob"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_0b77u")
+level_name = "Castle Approach"
+blurb = "Level 1 -- three short carves, two pads, one gate."
+
+[node name="StartPad" parent="." instance=ExtResource("2_y3so6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.92544, 34.472, -20)
+size = Vector3(30, 3, 40)
+
+[node name="RampL1" parent="." instance=ExtResource("4_513gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="RampR1" parent="." instance=ExtResource("4_513gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+side = 1
+
+[node name="Pad2" parent="." instance=ExtResource("2_y3so6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 92.5)
+
+[node name="RampL3" parent="." instance=ExtResource("4_513gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -46, 115)
+
+[node name="RampR3" parent="." instance=ExtResource("4_513gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -46, 115)
+side = 1
+
+[node name="Pad4" parent="." instance=ExtResource("2_y3so6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -70, 207.5)
+
+[node name="RampL5" parent="." instance=ExtResource("4_513gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -92, 230)
+length = 60.0
+
+[node name="RampR5" parent="." instance=ExtResource("4_513gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -92, 230)
+length = 60.0
+side = 1
+
+[node name="EndPad" parent="." instance=ExtResource("2_y3so6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -104, 377)
+size = Vector3(183.85089, 4, 124)
+
+[node name="Finish" parent="." instance=ExtResource("6_8fbbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -104, 315)
+opening_half_width = 61.92544243589427
+
+[node name="Decor" parent="." instance=ExtResource("8_j5qlp")]
+inner_x = 76.92544243589427
+outer_x = 206.92544243589427
+extent = Vector3(0, 186, 375)
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="CP00" parent="Checkpoints" instance=ExtResource("10_ii5rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.92544, 36.472, -16)
+
+[node name="CP01" parent="Checkpoints" instance=ExtResource("10_ii5rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.92544, 37.472, 10)
+
+[node name="CP02" parent="Checkpoints" instance=ExtResource("10_ii5rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.76, -22, 76)
+
+[node name="CP03" parent="Checkpoints" instance=ExtResource("10_ii5rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.92544, -8.528, 125)
+
+[node name="CP04" parent="Checkpoints" instance=ExtResource("10_ii5rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.76, -68, 191)
+
+[node name="CP05" parent="Checkpoints" instance=ExtResource("10_ii5rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.92544, -54.528, 240)
+
+[node name="CP06" parent="Checkpoints" instance=ExtResource("10_ii5rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 360)
+
+[node name="Goblin1" parent="." instance=ExtResource("11_gob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -24, 82)
+coin_drop = null
+
+[node name="Goblin2" parent="." instance=ExtResource("11_gob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -24, 104)
+coin_drop = null
+
+[node name="Goblin3" parent="." instance=ExtResource("11_gob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -70, 197)
+coin_drop = null
+
+[node name="Goblin4" parent="." instance=ExtResource("11_gob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -70, 219)
+coin_drop = null
+
+[node name="Goblin5" parent="." instance=ExtResource("11_gob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, -104, 322)
+coin_drop = null
+
+[node name="Goblin6" parent="." instance=ExtResource("11_gob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, -104, 322)
+coin_drop = null

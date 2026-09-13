@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://course/level.gd" id="1_pydn8"]
+[ext_resource type="PackedScene" path="res://blocks/platform.tscn" id="2_xupn2"]
+[ext_resource type="Script" path="res://blocks/platform.gd" id="3_c0e3i"]
+[ext_resource type="PackedScene" path="res://blocks/ramp.tscn" id="4_yhg66"]
+[ext_resource type="Script" path="res://blocks/ramp.gd" id="5_dpg45"]
+[ext_resource type="PackedScene" path="res://blocks/finish.tscn" id="6_gxtmj"]
+[ext_resource type="Script" path="res://blocks/finish.gd" id="7_nx4a3"]
+[ext_resource type="PackedScene" path="res://blocks/decor.tscn" id="8_b8kcn"]
+[ext_resource type="Script" path="res://blocks/decor.gd" id="9_a7vhg"]
+[ext_resource type="PackedScene" path="res://blocks/checkpoint.tscn" id="10_hnjjb"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_pydn8")
+level_name = "Velocity"
+blurb = "Long, tall, steep. Ride high and let it build."
+
+[node name="StartPad" type="StaticBody3D" parent="." instance=ExtResource("2_xupn2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.87938, 94.56129, -20)
+script = ExtResource("3_c0e3i")
+size = Vector3(30, 3, 40)
+
+[node name="RampL1" type="StaticBody3D" parent="." instance=ExtResource("4_yhg66")]
+transform = Transform3D(1, 0, 0, 0, 0.98768836, -0.15643448, 0, 0.15643448, 0.98768836, -12, 0, 0)
+script = ExtResource("5_dpg45")
+angle = 52.0
+width = 120.0
+length = 600.0
+
+[node name="RampR1" type="StaticBody3D" parent="." instance=ExtResource("4_yhg66")]
+transform = Transform3D(1, 0, 0, 0, 0.98768836, -0.15643448, 0, 0.15643448, 0.98768836, 12, 0, 0)
+script = ExtResource("5_dpg45")
+angle = 52.0
+width = 120.0
+length = 600.0
+side = 1
+
+[node name="RampL2" type="StaticBody3D" parent="." instance=ExtResource("4_yhg66")]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, -14, -120, 625)
+script = ExtResource("5_dpg45")
+angle = 52.0
+width = 120.0
+length = 600.0
+
+[node name="RampR2" type="StaticBody3D" parent="." instance=ExtResource("4_yhg66")]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 14, -120, 625)
+script = ExtResource("5_dpg45")
+angle = 52.0
+width = 120.0
+length = 600.0
+side = 1
+
+[node name="RampL3" type="StaticBody3D" parent="." instance=ExtResource("4_yhg66")]
+transform = Transform3D(1, 0, 0, 0, 0.98162717, -0.190809, 0, 0.190809, 0.98162717, -12, -260, 1250)
+script = ExtResource("5_dpg45")
+angle = 52.0
+width = 120.0
+length = 700.0
+
+[node name="RampR3" type="StaticBody3D" parent="." instance=ExtResource("4_yhg66")]
+transform = Transform3D(1, 0, 0, 0, 0.98162717, -0.190809, 0, 0.190809, 0.98162717, 12, -260, 1250)
+script = ExtResource("5_dpg45")
+angle = 52.0
+width = 120.0
+length = 700.0
+side = 1
+
+[node name="EndPad" type="StaticBody3D" parent="." instance=ExtResource("2_xupn2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -408.06622, 2037)
+script = ExtResource("3_c0e3i")
+size = Vector3(281.75876, 4, 124)
+
+[node name="Finish" type="Area3D" parent="." instance=ExtResource("6_gxtmj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -408.06622, 1975)
+script = ExtResource("7_nx4a3")
+opening_half_width = 110.87937703907899
+
+[node name="Decor" type="Node3D" parent="." instance=ExtResource("8_b8kcn")]
+script = ExtResource("9_a7vhg")
+inner_x = 125.87937703907899
+outer_x = 255.87937703907897
+extent = Vector3(0, 490.06622, 2035)
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="CP00" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_hnjjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.87938, 96.56129, -16)
+gizmo_extents = 4.0
+
+[node name="CP01" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_hnjjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.87938, 97.56129, 10)
+gizmo_extents = 4.0
+
+[node name="CP02" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_hnjjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.87938, -22.43871, 635)
+gizmo_extents = 4.0
+
+[node name="CP03" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_hnjjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.87938, -162.4387, 1260)
+gizmo_extents = 4.0
+
+[node name="CP04" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_hnjjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -404.06622, 2020)
+gizmo_extents = 4.0

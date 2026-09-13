@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://course/level.gd" id="1_fr8or"]
+[ext_resource type="PackedScene" path="res://blocks/platform.tscn" id="2_q56td"]
+[ext_resource type="Script" path="res://blocks/platform.gd" id="3_fo3u1"]
+[ext_resource type="PackedScene" path="res://blocks/ramp.tscn" id="4_lgnwg"]
+[ext_resource type="Script" path="res://blocks/ramp.gd" id="5_88ba7"]
+[ext_resource type="PackedScene" path="res://blocks/finish.tscn" id="6_ljlv7"]
+[ext_resource type="Script" path="res://blocks/finish.gd" id="7_me8ij"]
+[ext_resource type="PackedScene" path="res://blocks/decor.tscn" id="8_vu3hp"]
+[ext_resource type="Script" path="res://blocks/decor.gd" id="9_u5k35"]
+[ext_resource type="PackedScene" path="res://blocks/checkpoint.tscn" id="10_dm2sx"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_fr8or")
+level_name = "Novice Channel"
+blurb = "Learn the carve. Short ramps, forgiving gaps."
+
+[node name="StartPad" type="StaticBody3D" parent="." instance=ExtResource("2_q56td")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.567257, 45.962666, -20)
+script = ExtResource("3_fo3u1")
+size = Vector3(30, 3, 40)
+
+[node name="RampL1" type="StaticBody3D" parent="." instance=ExtResource("4_lgnwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+script = ExtResource("5_88ba7")
+width = 60.0
+length = 150.0
+
+[node name="RampR1" type="StaticBody3D" parent="." instance=ExtResource("4_lgnwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+script = ExtResource("5_88ba7")
+width = 60.0
+length = 150.0
+side = 1
+
+[node name="RampL2" type="StaticBody3D" parent="." instance=ExtResource("4_lgnwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -30, 175)
+script = ExtResource("5_88ba7")
+width = 60.0
+length = 150.0
+
+[node name="RampR2" type="StaticBody3D" parent="." instance=ExtResource("4_lgnwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -30, 175)
+script = ExtResource("5_88ba7")
+width = 60.0
+length = 150.0
+side = 1
+
+[node name="RampL3" type="StaticBody3D" parent="." instance=ExtResource("4_lgnwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -66, 350)
+script = ExtResource("5_88ba7")
+width = 60.0
+length = 165.0
+
+[node name="RampR4" type="StaticBody3D" parent="." instance=ExtResource("4_lgnwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -106, 540)
+script = ExtResource("5_88ba7")
+width = 60.0
+length = 165.0
+side = 1
+
+[node name="RampL5" type="StaticBody3D" parent="." instance=ExtResource("4_lgnwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -150, 730)
+script = ExtResource("5_88ba7")
+width = 60.0
+length = 190.0
+
+[node name="RampR5" type="StaticBody3D" parent="." instance=ExtResource("4_lgnwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -150, 730)
+script = ExtResource("5_88ba7")
+width = 60.0
+length = 190.0
+side = 1
+
+[node name="EndPad" type="StaticBody3D" parent="." instance=ExtResource("2_q56td")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -162, 1007)
+script = ExtResource("3_fo3u1")
+size = Vector3(203.1345, 4, 124)
+
+[node name="Finish" type="Area3D" parent="." instance=ExtResource("6_ljlv7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -162, 945)
+script = ExtResource("7_me8ij")
+opening_half_width = 71.56725658119237
+
+[node name="Decor" type="Node3D" parent="." instance=ExtResource("8_vu3hp")]
+script = ExtResource("9_u5k35")
+inner_x = 86.56725658119237
+outer_x = 216.56725658119237
+extent = Vector3(0, 244, 1005)
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="CP00" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_dm2sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.567257, 47.962666, -16)
+gizmo_extents = 4.0
+
+[node name="CP01" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_dm2sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.567257, 48.962666, 10)
+gizmo_extents = 4.0
+
+[node name="CP02" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_dm2sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.567257, 18.962667, 185)
+gizmo_extents = 4.0
+
+[node name="CP03" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_dm2sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.567257, -17.037333, 360)
+gizmo_extents = 4.0
+
+[node name="CP04" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_dm2sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.567257, -57.037334, 550)
+gizmo_extents = 4.0
+
+[node name="CP05" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_dm2sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.567257, -101.03733, 740)
+gizmo_extents = 4.0
+
+[node name="CP06" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_dm2sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -158, 990)
+gizmo_extents = 4.0

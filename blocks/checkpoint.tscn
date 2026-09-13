@@ -1,0 +1,4 @@
+[gd_scene format=3]
+
+[node name="Checkpoint" type="Marker3D"]
+gizmo_extents = 4.0

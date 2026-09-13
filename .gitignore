@@ -1,0 +1,13 @@
+# Godot's import cache and editor state. Regenerated on open, churns on every
+# run, and is ~2.8MB right now -- far more of a bloat risk than any art file.
+.godot/
+
+# Keep the *.import files next to assets: Godot needs those, and they are tiny.
+
+# Blender rolling backups
+*.blend1
+*.blend2
+
+# OS noise
+.DS_Store
+Thumbs.db

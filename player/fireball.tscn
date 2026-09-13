@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://player/fireball.gd" id="1_fireball"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1"]
+radius = 0.55
+height = 1.1
+radial_segments = 10
+rings = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1"]
+albedo_color = Color(1, 0.62, 0.22, 1)
+emission_enabled = true
+emission = Color(1, 0.5, 0.15, 1)
+emission_energy_multiplier = 3.0
+
+[node name="Fireball" type="Area3D"]
+script = ExtResource("1_fireball")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_1")
+material_override = SubResource("StandardMaterial3D_1")
+
+[node name="Light" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.6, 0.25, 1)
+light_energy = 3.0
+omni_range = 14.0

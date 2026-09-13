@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://blocks/vendor.gd" id="1_vendor"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
+radius = 0.6
+height = 2.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_robe"]
+top_radius = 0.34
+bottom_radius = 0.72
+height = 1.5
+radial_segments = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_robe"]
+albedo_color = Color(0.3, 0.16, 0.42, 1)
+roughness = 0.9
+
+[sub_resource type="SphereMesh" id="SphereMesh_head"]
+radius = 0.26
+height = 0.52
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skin"]
+albedo_color = Color(0.87, 0.73, 0.6, 1)
+roughness = 0.85
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hat"]
+top_radius = 0.01
+bottom_radius = 0.55
+height = 1.1
+radial_segments = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hat"]
+albedo_color = Color(0.18, 0.12, 0.36, 1)
+roughness = 0.9
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_staff"]
+top_radius = 0.06
+bottom_radius = 0.06
+height = 2.4
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_staff"]
+albedo_color = Color(0.42, 0.3, 0.18, 1)
+roughness = 0.95
+
+[node name="Vendor" type="StaticBody3D"]
+script = ExtResource("1_vendor")
+vendor_name = "Vendor"
+
+[node name="Shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("CapsuleShape3D_1")
+
+[node name="Robe" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("CylinderMesh_robe")
+material_override = SubResource("StandardMaterial3D_robe")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68, 0)
+mesh = SubResource("SphereMesh_head")
+material_override = SubResource("StandardMaterial3D_skin")
+
+[node name="Hat" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.42, 0)
+mesh = SubResource("CylinderMesh_hat")
+material_override = SubResource("StandardMaterial3D_hat")
+
+[node name="Staff" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.2, -0.1)
+mesh = SubResource("CylinderMesh_staff")
+material_override = SubResource("StandardMaterial3D_staff")

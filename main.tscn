@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://main.gd" id="1_main"]
+[ext_resource type="Environment" path="res://world/sky.tres" id="2_sky"]
+[ext_resource type="PackedScene" path="res://course/course.tscn" id="3_course"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="4_player"]
+[ext_resource type="PackedScene" path="res://ui/hud.tscn" id="5_hud"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_main")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_sky")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.5735765, -0.49999997, 0.6494497, 0, 0.79335326, 0.6087614, -0.81915206, 0.34914452, -0.4535962, 0, 0, 0)
+light_color = Color(1, 0.95, 0.86, 1)
+light_energy = 1.1
+shadow_enabled = true
+directional_shadow_max_distance = 320.0
+
+[node name="Course" parent="." instance=ExtResource("3_course")]
+
+[node name="Player" parent="." instance=ExtResource("4_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="HUD" parent="." instance=ExtResource("5_hud")]

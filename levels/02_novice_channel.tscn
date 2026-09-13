@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://vrqj010pu8pw"]
+
+[ext_resource type="Script" uid="uid://dif742x7sd7ay" path="res://course/level.gd" id="1_5jein"]
+[ext_resource type="PackedScene" path="res://blocks/platform.tscn" id="2_pbc6h"]
+[ext_resource type="PackedScene" path="res://blocks/ramp.tscn" id="4_puoi6"]
+[ext_resource type="PackedScene" path="res://blocks/finish.tscn" id="6_p0w56"]
+[ext_resource type="PackedScene" path="res://blocks/decor.tscn" id="8_e8bl3"]
+[ext_resource type="PackedScene" path="res://blocks/checkpoint.tscn" id="10_8y6ab"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_5jein")
+level_name = "Novice Channel"
+blurb = "Learn the carve. Short ramps, forgiving gaps."
+
+[node name="StartPad" parent="." instance=ExtResource("2_pbc6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.567257, 45.962666, -20)
+size = Vector3(30, 3, 40)
+
+[node name="RampL1" parent="." instance=ExtResource("4_puoi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+width = 60.0
+length = 150.0
+
+[node name="RampR1" parent="." instance=ExtResource("4_puoi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+width = 60.0
+length = 150.0
+side = 1
+
+[node name="RampL2" parent="." instance=ExtResource("4_puoi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -30, 175)
+width = 60.0
+length = 150.0
+
+[node name="RampR2" parent="." instance=ExtResource("4_puoi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -30, 175)
+width = 60.0
+length = 150.0
+side = 1
+
+[node name="RampL3" parent="." instance=ExtResource("4_puoi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -66, 350)
+width = 60.0
+length = 165.0
+
+[node name="RampR4" parent="." instance=ExtResource("4_puoi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -106, 540)
+width = 60.0
+length = 165.0
+side = 1
+
+[node name="RampL5" parent="." instance=ExtResource("4_puoi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -150, 730)
+width = 60.0
+length = 190.0
+
+[node name="RampR5" parent="." instance=ExtResource("4_puoi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -150, 730)
+width = 60.0
+length = 190.0
+side = 1
+
+[node name="EndPad" parent="." instance=ExtResource("2_pbc6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -162, 1007)
+size = Vector3(203.1345, 4, 124)
+
+[node name="Finish" parent="." instance=ExtResource("6_p0w56")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -162, 945)
+opening_half_width = 71.56725658119237
+
+[node name="Decor" parent="." instance=ExtResource("8_e8bl3")]
+inner_x = 86.56725658119237
+outer_x = 216.56725658119237
+extent = Vector3(0, 244, 1005)
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="CP00" parent="Checkpoints" instance=ExtResource("10_8y6ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.567257, 47.962666, -16)
+
+[node name="CP01" parent="Checkpoints" instance=ExtResource("10_8y6ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.567257, 48.962666, 10)
+
+[node name="CP02" parent="Checkpoints" instance=ExtResource("10_8y6ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.567257, 18.962667, 185)
+
+[node name="CP03" parent="Checkpoints" instance=ExtResource("10_8y6ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.567257, -17.037333, 360)
+
+[node name="CP04" parent="Checkpoints" instance=ExtResource("10_8y6ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.567257, -57.037334, 550)
+
+[node name="CP05" parent="Checkpoints" instance=ExtResource("10_8y6ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.567257, -101.03733, 740)
+
+[node name="CP06" parent="Checkpoints" instance=ExtResource("10_8y6ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -158, 990)

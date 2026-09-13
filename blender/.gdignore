@@ -1,0 +1,5 @@
+Godot skips any directory containing a .gdignore file.
+
+Without this, Godot finds the .blend sources and tries to import them through
+Blender itself, which hung the editor scan. The .blend files are sources;
+Godot only ever reads the .glb exports under art/.

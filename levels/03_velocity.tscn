@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://y67o7qficf23"]
+
+[ext_resource type="Script" uid="uid://dif742x7sd7ay" path="res://course/level.gd" id="1_fdcm2"]
+[ext_resource type="PackedScene" path="res://blocks/platform.tscn" id="2_8cex2"]
+[ext_resource type="PackedScene" path="res://blocks/ramp.tscn" id="4_ge52h"]
+[ext_resource type="PackedScene" path="res://blocks/finish.tscn" id="6_l11q6"]
+[ext_resource type="PackedScene" path="res://blocks/decor.tscn" id="8_i84n5"]
+[ext_resource type="PackedScene" path="res://blocks/checkpoint.tscn" id="10_ykb8a"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_fdcm2")
+level_name = "Velocity"
+blurb = "Long, tall, steep. Ride high and let it build."
+
+[node name="StartPad" parent="." instance=ExtResource("2_8cex2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.87938, 94.56129, -20)
+size = Vector3(30, 3, 40)
+
+[node name="RampL1" parent="." instance=ExtResource("4_ge52h")]
+transform = Transform3D(1, 0, 0, 0, 0.98768836, -0.15643448, 0, 0.15643448, 0.98768836, -12, 0, 0)
+angle = 52.0
+width = 120.0
+length = 600.0
+
+[node name="RampR1" parent="." instance=ExtResource("4_ge52h")]
+transform = Transform3D(1, 0, 0, 0, 0.98768836, -0.15643448, 0, 0.15643448, 0.98768836, 12, 0, 0)
+angle = 52.0
+width = 120.0
+length = 600.0
+side = 1
+
+[node name="RampL2" parent="." instance=ExtResource("4_ge52h")]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, -14, -120, 625)
+angle = 52.0
+width = 120.0
+length = 600.0
+
+[node name="RampR2" parent="." instance=ExtResource("4_ge52h")]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 14, -120, 625)
+angle = 52.0
+width = 120.0
+length = 600.0
+side = 1
+
+[node name="RampL3" parent="." instance=ExtResource("4_ge52h")]
+transform = Transform3D(1, 0, 0, 0, 0.98162717, -0.190809, 0, 0.190809, 0.98162717, -12, -260, 1250)
+angle = 52.0
+width = 120.0
+length = 700.0
+
+[node name="RampR3" parent="." instance=ExtResource("4_ge52h")]
+transform = Transform3D(1, 0, 0, 0, 0.98162717, -0.190809, 0, 0.190809, 0.98162717, 12, -260, 1250)
+angle = 52.0
+width = 120.0
+length = 700.0
+side = 1
+
+[node name="EndPad" parent="." instance=ExtResource("2_8cex2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -408.06622, 2037)
+size = Vector3(281.75876, 4, 124)
+
+[node name="Finish" parent="." instance=ExtResource("6_l11q6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -408.06622, 1975)
+opening_half_width = 110.879377039079
+
+[node name="Decor" parent="." instance=ExtResource("8_i84n5")]
+inner_x = 125.879377039079
+outer_x = 255.87937703907895
+extent = Vector3(0, 490.06622, 2035)
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="CP00" parent="Checkpoints" instance=ExtResource("10_ykb8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.87938, 96.56129, -16)
+
+[node name="CP01" parent="Checkpoints" instance=ExtResource("10_ykb8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.87938, 97.56129, 10)
+
+[node name="CP02" parent="Checkpoints" instance=ExtResource("10_ykb8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.87938, -22.43871, 635)
+
+[node name="CP03" parent="Checkpoints" instance=ExtResource("10_ykb8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.87938, -162.4387, 1260)
+
+[node name="CP04" parent="Checkpoints" instance=ExtResource("10_ykb8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -404.06622, 2020)

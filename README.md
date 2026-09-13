@@ -9,6 +9,7 @@ castle-storming later.
     ./run.sh edit     # open the editor
     ./run.sh test     # headless tests
     ./run.sh bake     # seed levels/ from the tables in tools/maps.gd
+    ./run.sh art      # regenerate the castle kit in art/ via headless Blender
 
 This is a Godot **4.5** project (`config_version=5`). `/usr/bin/godot3` is also
 installed; opening this project with it rewrites `project.godot` into the Godot 3
@@ -207,23 +208,27 @@ onto the ramp face (`model_bank`) and leans it into the strafe (`model_lean`) --
 without that, standing bolt upright on a 52° wall reads as stuck to it rather
 than carving. First person is still the more precise way to ride.
 
-`player/wizard.gd` animates procedurally rather than playing baked clips,
-because every pose is a function of live state: the cloak streams flat out and
-flutters faster the quicker you go, the hat tips back into the wind on its own
-slower beat, the arms are tucked when idle and thrown wide to balance while a
-ramp is holding you, the staff swings forward with speed, and there is a walk
-bob on foot that becomes a slow float in the air. The whole cycle rate scales
-with speed, which is most of what sells it -- the poses alone read identically
-at 200 and 2000 u/s. The player feeds it state each tick via `set_state()`.
+`player/wizard.tscn` is an authored rig -- every mesh, pivot and material is an
+ordinary node you can select, retexture or swap. `wizard.gd` only poses it; it
+builds nothing. The script deliberately does **not** animate in the editor,
+because posing real saved nodes there would bake whatever frame you saved on.
 
-On the ground it runs properly: the legs cycle, the arms counter-swing against
-them, the body dips once per footfall and leans harder the faster you go. Stride
-length is fixed so the cycle speeds up with you rather than the feet skating
-over the same ground. In the air the legs stop cycling and brace into a riding
-stance instead -- a jogging motion while pinned to a ramp face looks absurd.
+It animates procedurally rather than playing baked clips, because every pose is
+a function of live state: the cloak and hat streaming and fluttering faster the
+quicker you go, arms tucked when idle and thrown wide to balance while a ramp is
+holding you, the staff swung back out of the way at speed. A canned loop cannot
+know any of that, so it reads as a puppet sliding around.
 
-It is still primitives. Swap the node wholesale for a real model later; nothing
-depends on it and the collider is a plain capsule.
+On the ground it runs properly: hips swing, **knees fold on the back half of the
+stride** (a straight leg swinging backwards reads as a mannequin being dragged),
+the shoulders twist against the hips and the head holds its line against the
+shoulders. That last pair is cheap and is most of what makes a run look like a
+run. Stride length is fixed so the cycle speeds up with you rather than the feet
+skating. Landing squashes the body briefly. In the air the legs stop cycling and
+brace instead.
+
+Cloak and hat are both two-segment, and the lower half lags the upper, so they
+bend into a curve rather than swinging as one rigid slab.
 
 `ui/speed_lines.tscn` draws radial streaks rushing outward past about 18 m/s,
 mostly while airborne. Surf has no other cue for speed once the scenery is far
@@ -241,6 +246,10 @@ Headless, no window needed:
   shot carries 300m. Each of these fails silently otherwise -- an archer that
   never shoots looks exactly like one out of range, and a fireball that dies on
   spawn looks exactly like a missed shot.
+- `test_wizard` checks every pivot the animation script poses still exists in
+  the rig, and that the run cycle and riding pose are genuinely different
+  shapes. A renamed pivot otherwise leaves the wizard frozen mid-pose, which is
+  impossible to diagnose from a screenshot.
 - `test_lobby` checks the lobby loads first, the spawn is solid ground, the
   portals are wired, the vendor talks, and walking into a portal travels.
 - `test_blocks` loads every block scene, checks it builds, and checks the pads

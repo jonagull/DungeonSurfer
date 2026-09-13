@@ -1,0 +1,12 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://course/course.gd" id="1_course"]
+[ext_resource type="PackedScene" path="res://levels/lobby.tscn" id="2_lobby"]
+[ext_resource type="PackedScene" path="res://levels/basics.tscn" id="3_basics"]
+[ext_resource type="PackedScene" path="res://levels/castle_approach.tscn" id="4_castle"]
+[ext_resource type="PackedScene" path="res://levels/novice_channel.tscn" id="5_novice"]
+[ext_resource type="PackedScene" path="res://levels/velocity.tscn" id="6_velocity"]
+
+[node name="Course" type="Node3D"]
+script = ExtResource("1_course")
+levels = Array[PackedScene]([ExtResource("2_lobby"), ExtResource("3_basics"), ExtResource("4_castle"), ExtResource("5_novice"), ExtResource("6_velocity")])

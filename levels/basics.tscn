@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://course/level.gd" id="1_0dqaw"]
+[ext_resource type="PackedScene" path="res://blocks/platform.tscn" id="2_dpjmb"]
+[ext_resource type="Script" path="res://blocks/platform.gd" id="3_ngioi"]
+[ext_resource type="PackedScene" path="res://blocks/ramp.tscn" id="4_qlaxa"]
+[ext_resource type="Script" path="res://blocks/ramp.gd" id="5_0pc22"]
+[ext_resource type="PackedScene" path="res://blocks/finish.tscn" id="6_uky3k"]
+[ext_resource type="Script" path="res://blocks/finish.gd" id="7_orrqk"]
+[ext_resource type="PackedScene" path="res://blocks/decor.tscn" id="8_y88ss"]
+[ext_resource type="Script" path="res://blocks/decor.gd" id="9_mu0cb"]
+[ext_resource type="PackedScene" path="res://blocks/checkpoint.tscn" id="10_br1j7"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_0dqaw")
+level_name = "Basics"
+blurb = "Tutorial -- hold one strafe key and sweep the mouse that way."
+
+[node name="StartPad" type="StaticBody3D" parent="." instance=ExtResource("2_dpjmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.8761, 63.16731, -20)
+script = ExtResource("3_ngioi")
+size = Vector3(30, 3, 40)
+
+[node name="RampL1" type="StaticBody3D" parent="." instance=ExtResource("4_qlaxa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+script = ExtResource("5_0pc22")
+angle = 48.0
+width = 85.0
+length = 260.0
+
+[node name="RampR1" type="StaticBody3D" parent="." instance=ExtResource("4_qlaxa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+script = ExtResource("5_0pc22")
+angle = 48.0
+width = 85.0
+length = 260.0
+side = 1
+
+[node name="EndPad" type="StaticBody3D" parent="." instance=ExtResource("2_dpjmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 347)
+script = ExtResource("3_ngioi")
+size = Vector3(243.7522, 4, 124)
+
+[node name="Finish" type="Area3D" parent="." instance=ExtResource("6_uky3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 285)
+script = ExtResource("7_orrqk")
+opening_half_width = 91.87610154050296
+
+[node name="Decor" type="Node3D" parent="." instance=ExtResource("8_y88ss")]
+script = ExtResource("9_mu0cb")
+inner_x = 106.87610154050296
+outer_x = 236.87610154050296
+extent = Vector3(0, 94, 345)
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="CP00" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_br1j7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.876102, 65.16731, -16)
+gizmo_extents = 4.0
+
+[node name="CP01" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_br1j7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.876102, 66.16731, 10)
+gizmo_extents = 4.0
+
+[node name="CP02" type="Marker3D" parent="Checkpoints" instance=ExtResource("10_br1j7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 330)
+gizmo_extents = 4.0
